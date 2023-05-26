@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using YG;
 public class SlimeMove : MonoBehaviour
 {
     private Vector3 offset;
@@ -9,6 +9,8 @@ public class SlimeMove : MonoBehaviour
 
     [SerializeField] public int slimePrice;
     [SerializeField] public int slimeType;
+
+    public int index;
 
     void OnMouseDown()
     {
@@ -34,20 +36,21 @@ public class SlimeMove : MonoBehaviour
     {
         if(collision.gameObject.tag == "Slime")
         {
-            if(collision.gameObject.GetComponent<SlimeMove>().slimeType == slimeType)
-            {
-                //create new slime
-                //money++
-
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
+            SlimeMove sm = collision.gameObject.GetComponent<SlimeMove>();
+            if (sm.slimeType == slimeType)
+            {             
+                
+                if(index > sm.index)
+                {
+                    if (SlimeGenerator.Instance.newSlime(slimeType, transform.position, collision.transform.position))
+                    {
+                        Destroy(gameObject);
+                        Destroy(collision.gameObject);
+                    }
+                }
             }
         }
     }
 
-    public void AnimationFlyingCoins()
-    {
-
-    }
 
 }
