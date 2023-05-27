@@ -14,12 +14,11 @@ namespace YG
 
         public int[] count;
 
-        public bool[] slimeOpen = new bool[2];
+        public bool[] slimeOpen = new bool[3];
 
         public SavesYG()
         {
-            slimeOpen[0] = true;
-            count = new int[2];
+            count = new int[3];
         }
     }
 }

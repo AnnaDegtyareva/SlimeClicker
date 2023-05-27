@@ -639,53 +639,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299077237}
   m_CullTransparentMesh: 1
---- !u!1 &376818674
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 376818676}
-  - component: {fileID: 376818675}
-  m_Layer: 0
-  m_Name: Game
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &376818675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376818674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6671d95d5168b1f44b498e0498a1dfc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 0
-  moneyText: {fileID: 299077239}
-  prefabFlyText: {fileID: 0}
---- !u!4 &376818676
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376818674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &457376352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1007,7 @@ RectTransform:
   - {fileID: 754334078}
   - {fileID: 1492773613}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1074,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1184,7 +1137,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1428162850
 GameObject:
@@ -1688,9 +1641,13 @@ MonoBehaviour:
   slimePrefabs:
   - {fileID: 6947845224726909129, guid: 4d143f39cfd008e49909ebb5140d7f8f, type: 3}
   - {fileID: 6947845224726909129, guid: 745643c2e13824540b43d06fc9905d2b, type: 3}
+  - {fileID: 6947845224726909129, guid: 8e7f0950aa34ce9428a9dcc9cdc80930, type: 3}
   slimeText:
   - {fileID: 754334077}
   - {fileID: 1492773612}
+  money: 0
+  moneyText: {fileID: 299077239}
+  prefabFlyText: {fileID: 0}
 --- !u!4 &1941306486
 Transform:
   m_ObjectHideFlags: 0

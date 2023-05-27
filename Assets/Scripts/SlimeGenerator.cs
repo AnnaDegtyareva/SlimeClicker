@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
+using TMPro;
 
 public class SlimeGenerator : MonoBehaviour
 {
-    public static SlimeGenerator Instance = new SlimeGenerator();
+    public static SlimeGenerator Instance;
 
 
     int width;//ширина
@@ -16,9 +17,18 @@ public class SlimeGenerator : MonoBehaviour
     [SerializeField] public GameObject[] slimePrefabs;
     [SerializeField] public GameObject[] slimeText;
 
+    public int money;
+    [SerializeField] public TextMeshProUGUI moneyText;
+    [SerializeField] public GameObject prefabFlyText;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void textUpd()
+    {
+        moneyText.text = money.ToString();
     }
 
     private void Start()
@@ -27,6 +37,13 @@ public class SlimeGenerator : MonoBehaviour
         height = Screen.height;
                         
         InvokeRepeating("CreateSlime", 3, 3);
+
+        if (YandexGame.savesData.slimeOpen[0] == false)
+        {
+            slimeText[0].SetActive(true);
+            YandexGame.savesData.slimeOpen[0] = true;
+        }
+
         for (int i = 0; i < 2; i++)
         {
             CreateSlime();
@@ -65,10 +82,10 @@ public class SlimeGenerator : MonoBehaviour
         YandexGame.savesData.count[i] -= 2;
         YandexGame.savesData.count[i+1]++;
 
-        if (YandexGame.savesData.slimeOpen[i] == false)
+        if (YandexGame.savesData.slimeOpen[i+1] == false)
         {
-            slimeText[i].SetActive(true);
-            YandexGame.savesData.slimeOpen[i] = true;
+            slimeText[i+1].SetActive(true);
+            YandexGame.savesData.slimeOpen[i+1] = true;
         }
 
         YandexGame.SaveProgress();

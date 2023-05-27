@@ -17,8 +17,8 @@ public class SlimeMove : MonoBehaviour
         offset = gameObject.transform.position -
         Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 
-        Game.instance.money += slimePrice;
-        Game.instance.textUpd();
+        SlimeGenerator.Instance.money += slimePrice;
+        SlimeGenerator.Instance.textUpd();
     }
 
     void OnMouseDrag()
