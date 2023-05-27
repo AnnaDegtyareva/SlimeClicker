@@ -4,16 +4,12 @@ using UnityEngine;
 using TMPro;
 public class FlyText : MonoBehaviour
 {
-    bool move;
-    private void Update()
+    private void Start()
     {
-        if (!move) return;
+        Invoke("Delete", 2f);
     }
-
-    public void StartFly(int score)
+    public void Delete()
     {
-        GetComponent<TextMeshProUGUI>().text = score.ToString();
-        move = true;
-
+        Destroy(gameObject);
     }
 }

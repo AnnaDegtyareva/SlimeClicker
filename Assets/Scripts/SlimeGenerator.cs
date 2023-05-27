@@ -9,7 +9,6 @@ public class SlimeGenerator : MonoBehaviour
 {
     public static SlimeGenerator Instance;
 
-
     int width;//ширина
     int height;//высота
     private int index;
@@ -19,7 +18,9 @@ public class SlimeGenerator : MonoBehaviour
 
     public int money;
     [SerializeField] public TextMeshProUGUI moneyText;
+
     [SerializeField] public GameObject prefabFlyText;
+    [SerializeField] public GameObject canvas;
 
     private void Awake()
     {
@@ -29,6 +30,14 @@ public class SlimeGenerator : MonoBehaviour
     public void textUpd()
     {
         moneyText.text = money.ToString();
+    }
+
+    public void CreateText(int countMoney, Vector3 pos)
+    {
+        GameObject newText = Instantiate(prefabFlyText, prefabFlyText.transform.position = pos, Quaternion.identity) as GameObject;
+        newText.transform.SetParent(canvas.transform, false);
+        newText.GetComponent<TextMeshProUGUI>().text = countMoney.ToString();
+        newText.GetComponent<Rigidbody2D>().velocity = pos / 30;
     }
 
     private void Start()
@@ -76,8 +85,9 @@ public class SlimeGenerator : MonoBehaviour
     {
         if (i + 1 == slimePrefabs.Length) return false;
 
-        GameObject newSlime = Instantiate(slimePrefabs[i+1], (fp+sp)/2, Quaternion.identity); 
-        newSlime.GetComponent<SlimeMove>().index = index;
+        GameObject newSlime = Instantiate(slimePrefabs[i+1], (fp+sp)/2, Quaternion.identity);
+        SlimeMove sm = newSlime.GetComponent<SlimeMove>();
+        sm.index = index;
         index++;
         YandexGame.savesData.count[i] -= 2;
         YandexGame.savesData.count[i+1]++;
@@ -87,6 +97,8 @@ public class SlimeGenerator : MonoBehaviour
             slimeText[i+1].SetActive(true);
             YandexGame.savesData.slimeOpen[i+1] = true;
         }
+
+        CreateText(sm.slimePrice, (fp + sp) / 2);
 
         YandexGame.SaveProgress();
         return true;

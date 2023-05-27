@@ -19,12 +19,14 @@ public class SlimeMove : MonoBehaviour
 
         SlimeGenerator.Instance.money += slimePrice;
         SlimeGenerator.Instance.textUpd();
+
+        SlimeGenerator.Instance.CreateText(slimePrice, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
     }
 
     void OnMouseDrag()
     {
         Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-        transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
+        transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;        
     }
 
     private void Start()
