@@ -45,7 +45,7 @@ public class SlimeGenerator : MonoBehaviour
         width = Screen.width;
         height = Screen.height;
                         
-        InvokeRepeating("CreateSlime", 3, 3);
+        InvokeRepeating("CreateSlime", 3, 3);//поменять цифры
 
         if (YandexGame.savesData.slimeOpen[0] == false)
         {

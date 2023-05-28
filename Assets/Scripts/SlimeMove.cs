@@ -11,6 +11,7 @@ public class SlimeMove : MonoBehaviour
     [SerializeField] public int slimeType;
 
     public int index;
+    Vector3 TargetPos;
 
     void OnMouseDown()
     {
@@ -32,6 +33,8 @@ public class SlimeMove : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        TargetPos = new Vector3(transform.position.x + Random.Range(-1.5f, 1.5f), transform.position.y + Random.Range(-1.5f, 1.5f), 0);
+        //InvokeRepeating("smallMove", 2, 4);//поменять цифры
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,6 +55,12 @@ public class SlimeMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Update()
+    {
+        var step = 1.0f * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
     }
 
 
