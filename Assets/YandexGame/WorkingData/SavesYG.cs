@@ -16,6 +16,8 @@ namespace YG
 
         public bool[] slimeOpen = new bool[3];
 
+        public int money;
+
         public SavesYG()
         {
             count = new int[3];

@@ -14,6 +14,7 @@ public class SlimeGenerator : MonoBehaviour
     private int index;
 
     [SerializeField] public GameObject[] slimePrefabs;
+    [SerializeField] public Sprite[] slimeImg;
     [SerializeField] public GameObject[] slimeText;
 
     public int money;
@@ -30,6 +31,8 @@ public class SlimeGenerator : MonoBehaviour
     public void textUpd()
     {
         moneyText.text = money.ToString();
+        YandexGame.savesData.money = money;
+        YandexGame.SaveProgress();
     }
 
     public void CreateText(int countMoney, Vector3 pos)
