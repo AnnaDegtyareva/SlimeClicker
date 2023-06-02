@@ -5,11 +5,18 @@ using YG;
 
 public class GameCanvas : MonoBehaviour
 {
-    [SerializeField] GameObject canvasShop;
+    public static GameCanvas instance;
+
+    [SerializeField] public GameObject canvasShop;
     [SerializeField] GameObject prefab;
     [SerializeField] Transform grid;
 
-    public List<GameObject> butonnsShop = new List<GameObject>();   
+    public List<GameObject> butonnsShop = new List<GameObject>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void ClearShop()
     {

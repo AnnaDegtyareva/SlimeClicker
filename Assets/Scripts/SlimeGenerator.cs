@@ -23,6 +23,7 @@ public class SlimeGenerator : MonoBehaviour
     [SerializeField] public GameObject prefabFlyText;
     [SerializeField] public GameObject canvas;
 
+
     private void Awake()
     {
         Instance = this;
@@ -80,6 +81,7 @@ public class SlimeGenerator : MonoBehaviour
 
         GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2 (Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
+        YandexGame.savesData.allSlimes[type]++;
         index++;
         YandexGame.SaveProgress();
     }
@@ -91,6 +93,7 @@ public class SlimeGenerator : MonoBehaviour
         GameObject newSlime = Instantiate(slimePrefabs[i+1], (fp+sp)/2, Quaternion.identity);
         SlimeMove sm = newSlime.GetComponent<SlimeMove>();
         sm.index = index;
+        YandexGame.savesData.allSlimes[i]++;
         index++;
         YandexGame.savesData.count[i] -= 2;
         YandexGame.savesData.count[i+1]++;

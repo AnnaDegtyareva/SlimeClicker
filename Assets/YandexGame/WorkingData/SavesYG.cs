@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
+﻿
 namespace YG
 {
     [System.Serializable]
@@ -14,13 +12,17 @@ namespace YG
 
         public int[] count;
 
-        public bool[] slimeOpen = new bool[3];
+        public bool[] slimeOpen;
 
         public int money;
+
+        public int[] allSlimes;
 
         public SavesYG()
         {
             count = new int[3];
+            slimeOpen = new bool[3];
+            allSlimes = new int[3];
         }
     }
 }

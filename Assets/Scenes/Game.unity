@@ -2477,7 +2477,7 @@ MonoBehaviour:
   - {fileID: 6947845224726909129, guid: 745643c2e13824540b43d06fc9905d2b, type: 3}
   - {fileID: 6947845224726909129, guid: 8e7f0950aa34ce9428a9dcc9cdc80930, type: 3}
   slimeImg:
-  - {fileID: 21300000, guid: 519e049cda1c435499eebd1d97d741c2, type: 3}
+  - {fileID: 21300000, guid: 1007286c832092d4ca0fcba0fad046a3, type: 3}
   - {fileID: 21300000, guid: 06f5327c8a8659b44aa589fd6c0f6660, type: 3}
   - {fileID: 21300000, guid: c9b7279b2da06904095b014101b7377e, type: 3}
   slimeText:

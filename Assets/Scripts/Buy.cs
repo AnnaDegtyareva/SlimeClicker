@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using YG;
 
 public class Buy : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public class Buy : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textPrice;
     [SerializeField] Image imgPrefab;
-
-    [SerializeField] GameObject shopCanvas;
 
     private void Start()
     {
@@ -27,8 +26,10 @@ public class Buy : MonoBehaviour
         {
             SlimeGenerator.Instance.money -= price;
             SlimeGenerator.Instance.textUpd();
-            shopCanvas.SetActive(false);
-            GameObject newSlime = Instantiate(SlimeGenerator.Instance.slimePrefabs[type], new Vector2(0, 0), Quaternion.identity);
+            GameCanvas.instance.canvasShop.SetActive(false);
+            GameObject newSlime = Instantiate(SlimeGenerator.Instance.slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+            YandexGame.savesData.allSlimes[type]++;
+            YandexGame.SaveProgress();
 
         }
     }
