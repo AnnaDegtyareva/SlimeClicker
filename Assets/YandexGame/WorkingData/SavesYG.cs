@@ -18,11 +18,14 @@ namespace YG
 
         public bool FirstLaunch;
 
+        public int world;
+
         public SavesYG()
         {
             FirstLaunch = true;
-            slimeOpen = new bool[3];
-            allSlimes = new int[3];
+            slimeOpen = new bool[8];
+            allSlimes = new int[8];
+            world = 0;
         }
     }
 }

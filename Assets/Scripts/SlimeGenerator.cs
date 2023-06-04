@@ -23,6 +23,11 @@ public class SlimeGenerator : MonoBehaviour
     [SerializeField] public GameObject prefabFlyText;
     [SerializeField] public GameObject canvas;
 
+    [SerializeField] public GameObject world;
+    [SerializeField] public Sprite[] worldImg;
+
+    int startCount = 0;
+
 
     private void Awake()
     {
@@ -53,6 +58,8 @@ public class SlimeGenerator : MonoBehaviour
         textUpd();
 
         InvokeRepeating("Slime", 3, 3);//поменять цифры
+
+        ChangeWorld();
 
 
         if(YandexGame.savesData.FirstLaunch == true)
@@ -89,8 +96,7 @@ public class SlimeGenerator : MonoBehaviour
         GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
         index++;
-
-        Debug.Log("loadSlime");
+        ChangeWorld();
     }
 
     public void Slime()
@@ -110,9 +116,14 @@ public class SlimeGenerator : MonoBehaviour
             }
         }
 
+        if(startCount != 0)
+        {
+            startCount = YandexGame.savesData.world * 8;
+        }
+
         if(type == -1)
         {
-            type = Random.Range(0, count);
+            type = Random.Range(startCount, count);
         }
 
 
@@ -142,7 +153,21 @@ public class SlimeGenerator : MonoBehaviour
 
         CreateText(sm.slimePrice, (fp + sp) / 2);
 
+        if((i+2)%8 == 0)
+        {
+            Debug.Log(YandexGame.savesData.world);
+            YandexGame.savesData.world++;
+            ChangeWorld();
+        }
+
         YandexGame.SaveProgress();
         return true;
+    }
+
+    public void ChangeWorld()
+    {
+        int number = YandexGame.savesData.world;
+        world.GetComponent<SpriteRenderer>().sprite = worldImg[number];
+
     }
 }
