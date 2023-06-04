@@ -18,8 +18,11 @@ namespace YG
 
         public int[] allSlimes;
 
+        public bool FirstLaunch;
+
         public SavesYG()
         {
+            FirstLaunch = true;
             count = new int[3];
             slimeOpen = new bool[3];
             allSlimes = new int[3];

@@ -27,14 +27,16 @@ public class SlimeMove : MonoBehaviour
     void OnMouseDrag()
     {
         Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-        transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;        
+        if(offset.x <= 10.5f && offset.y <= 6.5f)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
+        }    
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         TargetPos = new Vector3(transform.position.x + Random.Range(-1.5f, 1.5f), transform.position.y + Random.Range(-1.5f, 1.5f), 0);
-        //InvokeRepeating("smallMove", 2, 4);//поменять цифры
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

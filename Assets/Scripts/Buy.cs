@@ -14,6 +14,8 @@ public class Buy : MonoBehaviour
     [SerializeField] TextMeshProUGUI textPrice;
     [SerializeField] Image imgPrefab;
 
+    SlimeGenerator Sg = SlimeGenerator.Instance;
+
     private void Start()
     {
         textPrice.text = price.ToString();
@@ -22,12 +24,14 @@ public class Buy : MonoBehaviour
 
     public void BuySlime()
     {
-        if(price <= SlimeGenerator.Instance.money)
+        if(price <= Sg.money)
         {
-            SlimeGenerator.Instance.money -= price;
-            SlimeGenerator.Instance.textUpd();
+            Sg.money -= price;
+            Sg.textUpd();
             GameCanvas.instance.canvasShop.SetActive(false);
-            GameObject newSlime = Instantiate(SlimeGenerator.Instance.slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+            GameObject newSlime = Instantiate(Sg.slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+            newSlime.GetComponent<SlimeMove>().index = Sg.index++;
+            Sg.index = Sg.index++; 
             YandexGame.savesData.allSlimes[type]++;
             YandexGame.SaveProgress();
 

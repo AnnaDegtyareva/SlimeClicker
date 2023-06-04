@@ -11,7 +11,7 @@ public class SlimeGenerator : MonoBehaviour
 
     int width;//ширина
     int height;//высота
-    private int index;
+    public int index;
 
     [SerializeField] public GameObject[] slimePrefabs;
     [SerializeField] public Sprite[] slimeImg;
@@ -48,22 +48,45 @@ public class SlimeGenerator : MonoBehaviour
     {
         width = Screen.width;
         height = Screen.height;
-                        
+
+        moneyText.text = YandexGame.savesData.money.ToString();
+
         InvokeRepeating("CreateSlime", 3, 3);//поменять цифры
 
-        if (YandexGame.savesData.slimeOpen[0] == false)
+
+        if(YandexGame.savesData.FirstLaunch == true)
         {
-            slimeText[0].SetActive(true);
-            YandexGame.savesData.slimeOpen[0] = true;
+            for (int i = 0; i < 2; i++)
+            {
+                CreateSlime(-1); 
+                slimeText[0].SetActive(true);
+                YandexGame.savesData.slimeOpen[0] = true;
+                YandexGame.savesData.FirstLaunch = false;
+            }
+        }
+        else
+        {
+            Debug.Log(YandexGame.savesData.slimeOpen);
+            for (int i = 0; i < YandexGame.savesData.slimeOpen.Length; i++)
+            {
+                if (YandexGame.savesData.slimeOpen[i] == true)
+                {
+                    Debug.Log(YandexGame.savesData.slimeOpen[i]);
+                    for (int j = 0; j < YandexGame.savesData.allSlimes[i]+1; j++)
+                    {
+                        CreateSlime(i);
+                        Debug.Log(YandexGame.savesData.allSlimes[i]);
+                    }
+                }
+            }
         }
 
-        for (int i = 0; i < 2; i++)
-        {
-            CreateSlime();
-        }
+        YandexGame.SaveProgress();
+
+        
     }
 
-    public void CreateSlime()
+    public void CreateSlime(int type)
     {
         int count = 0;
 
@@ -74,8 +97,11 @@ public class SlimeGenerator : MonoBehaviour
                 count++;
             }
         }
-        
-        int type = Random.Range(0, count);
+
+        if(type == -1)
+        {
+            type = Random.Range(0, count);
+        }
 
         YandexGame.savesData.count[type]++;
 
