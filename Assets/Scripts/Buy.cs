@@ -29,10 +29,7 @@ public class Buy : MonoBehaviour
             Sg.money -= price;
             Sg.textUpd();
             GameCanvas.instance.canvasShop.SetActive(false);
-            GameObject newSlime = Instantiate(Sg.slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
-            newSlime.GetComponent<SlimeMove>().index = Sg.index++;
-            Sg.index = Sg.index++; 
-            YandexGame.savesData.allSlimes[type]++;
+            Sg.CreateSlime(type);
             YandexGame.SaveProgress();
 
         }

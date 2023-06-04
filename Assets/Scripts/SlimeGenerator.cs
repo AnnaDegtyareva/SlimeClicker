@@ -49,33 +49,31 @@ public class SlimeGenerator : MonoBehaviour
         width = Screen.width;
         height = Screen.height;
 
-        moneyText.text = YandexGame.savesData.money.ToString();
+        money = YandexGame.savesData.money;
+        textUpd();
 
-        InvokeRepeating("CreateSlime", 3, 3);//поменять цифры
+        InvokeRepeating("Slime", 3, 3);//поменять цифры
 
 
         if(YandexGame.savesData.FirstLaunch == true)
         {
             for (int i = 0; i < 2; i++)
             {
-                CreateSlime(-1); 
-                slimeText[0].SetActive(true);
-                YandexGame.savesData.slimeOpen[0] = true;
-                YandexGame.savesData.FirstLaunch = false;
+                CreateSlime(0);
             }
+            slimeText[0].SetActive(true);
+            YandexGame.savesData.slimeOpen[0] = true;
+            YandexGame.savesData.FirstLaunch = false;
         }
         else
         {
-            Debug.Log(YandexGame.savesData.slimeOpen);
-            for (int i = 0; i < YandexGame.savesData.slimeOpen.Length; i++)
+            for (int i = 0; i < YandexGame.savesData.allSlimes.Length; i++)
             {
-                if (YandexGame.savesData.slimeOpen[i] == true)
+                if (YandexGame.savesData.allSlimes[i] != 0)
                 {
-                    Debug.Log(YandexGame.savesData.slimeOpen[i]);
-                    for (int j = 0; j < YandexGame.savesData.allSlimes[i]+1; j++)
+                    for (int j = 0;  j < YandexGame.savesData.allSlimes[i]+1;  j++)
                     {
                         CreateSlime(i);
-                        Debug.Log(YandexGame.savesData.allSlimes[i]);
                     }
                 }
             }
@@ -84,6 +82,11 @@ public class SlimeGenerator : MonoBehaviour
         YandexGame.SaveProgress();
 
         
+    }
+
+    public void Slime()
+    {
+        CreateSlime(-1);
     }
 
     public void CreateSlime(int type)
