@@ -71,7 +71,7 @@ public class SlimeGenerator : MonoBehaviour
             {
                 if (YandexGame.savesData.allSlimes[i] != 0)
                 {
-                    for (int j = 0;  j < YandexGame.savesData.allSlimes[i]+1;  j++)
+                    for (int j = 0;  j < YandexGame.savesData.allSlimes[i];  j++)
                     {
                         LoadSlime(i);
                     }
@@ -89,6 +89,8 @@ public class SlimeGenerator : MonoBehaviour
         GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
         index++;
+
+        Debug.Log("loadSlime");
     }
 
     public void Slime()
@@ -113,7 +115,6 @@ public class SlimeGenerator : MonoBehaviour
             type = Random.Range(0, count);
         }
 
-        YandexGame.savesData.count[type]++;
 
         GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2 (Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
@@ -129,10 +130,9 @@ public class SlimeGenerator : MonoBehaviour
         GameObject newSlime = Instantiate(slimePrefabs[i+1], (fp+sp)/2, Quaternion.identity);
         SlimeMove sm = newSlime.GetComponent<SlimeMove>();
         sm.index = index;
-        YandexGame.savesData.allSlimes[i]++;
+        YandexGame.savesData.allSlimes[i+1]++;
+        YandexGame.savesData.allSlimes[i] -= 2;
         index++;
-        YandexGame.savesData.count[i] -= 2;
-        YandexGame.savesData.count[i+1]++;
 
         if (YandexGame.savesData.slimeOpen[i+1] == false)
         {
