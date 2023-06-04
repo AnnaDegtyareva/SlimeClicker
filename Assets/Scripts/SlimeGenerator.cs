@@ -73,7 +73,7 @@ public class SlimeGenerator : MonoBehaviour
                 {
                     for (int j = 0;  j < YandexGame.savesData.allSlimes[i]+1;  j++)
                     {
-                        CreateSlime(i);
+                        LoadSlime(i);
                     }
                 }
             }
@@ -82,6 +82,13 @@ public class SlimeGenerator : MonoBehaviour
         YandexGame.SaveProgress();
 
         
+    }
+
+    public void LoadSlime(int type)
+    {
+        GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+        newSlime.GetComponent<SlimeMove>().index = index;
+        index++;
     }
 
     public void Slime()
