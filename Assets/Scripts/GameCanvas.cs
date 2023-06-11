@@ -30,7 +30,7 @@ public class GameCanvas : MonoBehaviour
         ClearShop();
 
         canvasShop.SetActive(true);
-        for (int i = 0; i < SlimeGenerator.Instance.slimeImg.Length; i++)
+        for (int i = SlimeGenerator.Instance.startCount; i < SlimeGenerator.Instance.slimeImg.Length; i++)
         {
             if (YandexGame.savesData.slimeOpen[i] == true)
             {
