@@ -64,7 +64,7 @@ public class SlimeGenerator : MonoBehaviour
         ChangeWorld();
 
 
-        if(YandexGame.savesData.FirstLaunch == true)
+        if (YandexGame.savesData.FirstLaunch == true)
         {
             for (int i = 0; i < 2; i++)
             {
@@ -98,7 +98,6 @@ public class SlimeGenerator : MonoBehaviour
         GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
         index++;
-        ChangeWorld();
         allSlimesNow.Add(newSlime);
     }
 
@@ -178,6 +177,10 @@ public class SlimeGenerator : MonoBehaviour
         for(int i = 0; i < allSlimesNow.Count; i++)
         {
             Destroy(allSlimesNow[i]);
+        }
+        for (int j = 0; j < number*4; j++)
+        {
+            YandexGame.savesData.allSlimes[j] = 0;
         }
 
         startCount = number*4;
