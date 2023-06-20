@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using YG;
+using UnityEngine.SceneManagement;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class GameCanvas : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ClearShop()

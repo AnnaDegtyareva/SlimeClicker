@@ -32,7 +32,6 @@ public class SlimeGenerator : MonoBehaviour
 
     [SerializeField] public GameObject[] prefabsFood;
 
-
     private void Awake()
     {
         Instance = this;
