@@ -49,7 +49,7 @@ public class SlimeMove : MonoBehaviour
         TimeBetween = Random.Range(3f, 10f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Slime")
         {
@@ -75,7 +75,20 @@ public class SlimeMove : MonoBehaviour
                 ChangeTargetPos();
             }
         }
-        
+        if (collision.gameObject.tag == "Food")
+        {
+            float count = collision.gameObject.GetComponent<Food>().count;
+            transform.localScale = new Vector3(transform.localScale.x + count, transform.localScale.y + count, transform.localScale.z + count);
+            Destroy(collision.gameObject);
+            
+            if(transform.localScale.x >= 3)
+            {
+                Vector2 pos = new Vector2(transform.position.x+2, transform.position.y+2);
+                SlimeGenerator.Instance.CreateSlime(slimeType, pos);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -85,6 +98,7 @@ public class SlimeMove : MonoBehaviour
             YandexGame.SaveProgress();
             Destroy(gameObject);
         }
+        
     }
 
     private void Update()

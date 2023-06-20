@@ -29,9 +29,14 @@ public class Buy : MonoBehaviour
             Sg.money -= price;
             Sg.textUpd();
             GameCanvas.instance.canvasShop.SetActive(false);
-            Sg.CreateSlime(type);
+            Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+            Sg.CreateSlime(type, pos);
             YandexGame.SaveProgress();
 
+        }
+        else
+        {
+            GameCanvas.instance.canvasNotMoney.SetActive(true);
         }
     }
 }

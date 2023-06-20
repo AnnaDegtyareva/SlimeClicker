@@ -30,6 +30,8 @@ public class SlimeGenerator : MonoBehaviour
 
     public int startCount = 0;
 
+    [SerializeField] public GameObject[] prefabsFood;
+
 
     private void Awake()
     {
@@ -59,7 +61,7 @@ public class SlimeGenerator : MonoBehaviour
         money = YandexGame.savesData.money;
         textUpd();
 
-        InvokeRepeating("Slime", 3, 3);//поменять цифры
+        InvokeRepeating("Slime", 3, 15);//поменять цифры
 
         ChangeWorld();
 
@@ -68,7 +70,8 @@ public class SlimeGenerator : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                CreateSlime(0);
+                Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+                CreateSlime(0, pos);
             }
             slimeText[0].SetActive(true);
             YandexGame.savesData.slimeOpen[0] = true;
@@ -103,10 +106,11 @@ public class SlimeGenerator : MonoBehaviour
 
     public void Slime()
     {
-        CreateSlime(-1);
+        Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+        CreateSlime(-1, pos);
     }
 
-    public void CreateSlime(int type)
+    public void CreateSlime(int type, Vector2 pos)
     {
         int count = 0;
 
@@ -128,13 +132,13 @@ public class SlimeGenerator : MonoBehaviour
             type = Random.Range(startCount, count);
         }
 
-
-        GameObject newSlime = Instantiate(slimePrefabs[type], new Vector2 (Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+        GameObject newSlime = Instantiate(slimePrefabs[type], pos, Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
         YandexGame.savesData.allSlimes[type]++;
         index++;
         YandexGame.SaveProgress();
         allSlimesNow.Add(newSlime);
+
     }
 
     public bool newSlime(int i, Vector3 fp, Vector3 sp)

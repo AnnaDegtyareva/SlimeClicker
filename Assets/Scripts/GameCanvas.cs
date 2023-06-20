@@ -11,6 +11,8 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] Transform grid;
 
+    [SerializeField] public GameObject canvasNotMoney;
+
     public List<GameObject> butonnsShop = new List<GameObject>();
 
     private void Awake()
@@ -42,6 +44,36 @@ public class GameCanvas : MonoBehaviour
 
                 butonnsShop.Add(newButton);
             }
+        }
+    }
+
+    public void CreateFood()
+    {
+        if (SlimeGenerator.Instance.money >= 25)
+        {
+            GameObject newFood = Instantiate(SlimeGenerator.Instance.prefabsFood[Random.Range(0, SlimeGenerator.Instance.prefabsFood.Length)], 
+                new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+            SlimeGenerator.Instance.money -= 25;
+            SlimeGenerator.Instance.textUpd();
+        }
+        else
+        {
+            canvasNotMoney.SetActive(true);
+        }
+    }
+
+    public void CleanerWorld()
+    {
+        for (int i = 0; i < YandexGame.savesData.allSlimes.Length; i++)
+        {
+            if (YandexGame.savesData.allSlimes[i] != 0)
+            {
+                YandexGame.savesData.allSlimes[i] = 0;
+            }
+        }
+        for (int j = 0; j < SlimeGenerator.Instance.allSlimesNow.Count; j++)
+        {
+            Destroy(SlimeGenerator.Instance.allSlimesNow[j]);
         }
     }
 
