@@ -18,6 +18,89 @@ public class MenuCanvas : MonoBehaviour
 
     [SerializeField] GameObject canvasNotSlime;
 
+    [SerializeField] AudioSource music;
+
+    [SerializeField] GameObject musicOn;
+    [SerializeField] GameObject musicOff;
+
+    [SerializeField] GameObject soundsOn;
+    [SerializeField] GameObject soundsOff;
+
+    private void Awake()
+    {
+        if (YandexGame.SDKEnabled)
+        {
+            Load();
+        }
+        else
+        {
+            YandexGame.GetDataEvent += Load;
+        }
+    }
+
+    public void Load()
+    {
+        if (YandexGame.savesData.music)
+        {
+            music.Play();
+            musicOn.SetActive(true);
+            musicOff.SetActive(false);
+        }
+        else
+        {
+            music.Stop();
+            musicOn.SetActive(false);
+            musicOff.SetActive(true);
+        }
+        if (YandexGame.savesData.sounds)
+        {
+            soundsOn.SetActive(true);
+            soundsOff.SetActive(false);
+        }
+        else
+        {
+            soundsOn.SetActive(false);
+            soundsOff.SetActive(true);
+        }
+    }
+
+    public void Music()
+    {
+        if (YandexGame.savesData.music)
+        {
+            music.Stop();
+            YandexGame.savesData.music = false;
+            musicOn.SetActive(false);
+            musicOff.SetActive(true);
+        }
+        else
+        {
+            music.Play();
+            YandexGame.savesData.music = true;
+            musicOn.SetActive(true);
+            musicOff.SetActive(false);
+        }
+
+        YandexGame.SaveProgress();
+    }
+    public void Sounds()
+    {
+        if (YandexGame.savesData.sounds)
+        {
+            YandexGame.savesData.sounds = false;
+            soundsOn.SetActive(false);
+            soundsOff.SetActive(true);
+        }
+        else
+        {
+            YandexGame.savesData.sounds = true;
+            soundsOn.SetActive(true);
+            soundsOff.SetActive(false);
+        }
+
+        YandexGame.SaveProgress();
+    }
+
     public void Play()
     {
         SceneManager.LoadScene(1);

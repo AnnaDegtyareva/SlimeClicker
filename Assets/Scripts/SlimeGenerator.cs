@@ -138,6 +138,12 @@ public class SlimeGenerator : MonoBehaviour
         YandexGame.SaveProgress();
         allSlimesNow.Add(newSlime);
 
+        if (YandexGame.savesData.sounds)
+        {
+            GameCanvas.instance.slimeAudio.clip = GameCanvas.instance.slimeAudios[0];
+            GameCanvas.instance.slimeAudio.Play();
+        }
+
     }
 
     public bool newSlime(int i, Vector3 fp, Vector3 sp)
@@ -169,6 +175,12 @@ public class SlimeGenerator : MonoBehaviour
         YandexGame.SaveProgress();
 
         allSlimesNow.Add(newSlime);
+
+        if (YandexGame.savesData.sounds)
+        {
+            GameCanvas.instance.slimeAudio.clip = GameCanvas.instance.slimeAudios[1];
+            GameCanvas.instance.slimeAudio.Play();
+        }
 
         return true;
     }

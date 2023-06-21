@@ -11,14 +11,12 @@ namespace YG
         public bool promptDone;
 
         public bool[] slimeOpen;
-
         public int money;
-
         public int[] allSlimes;
-
         public bool FirstLaunch;
-
         public int world;
+        public bool music;
+        public bool sounds;
 
         public SavesYG()
         {
@@ -26,6 +24,8 @@ namespace YG
             slimeOpen = new bool[8];
             allSlimes = new int[8];
             world = 0;
+            music = true;
+            sounds = true;
         }
     }
 }

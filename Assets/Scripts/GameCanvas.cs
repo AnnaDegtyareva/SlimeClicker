@@ -16,9 +16,31 @@ public class GameCanvas : MonoBehaviour
 
     public List<GameObject> butonnsShop = new List<GameObject>();
 
+    [SerializeField] public AudioSource worldAudio;
+    [SerializeField] public AudioSource slimeAudio;
+
+    [SerializeField] public AudioClip[] slimeAudios;
+
     private void Awake()
     {
         instance = this;
+
+        if (YandexGame.SDKEnabled)
+        {
+            Load();
+        }
+        else
+        {
+            YandexGame.GetDataEvent += Load;
+        }
+    }
+
+    public void Load()
+    {
+        if (YandexGame.savesData.music)
+        {
+            worldAudio.Play();
+        }
     }
 
     public void GoToMenu()

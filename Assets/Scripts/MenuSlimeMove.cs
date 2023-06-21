@@ -36,26 +36,10 @@ public class MenuSlimeMove : MonoBehaviour
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Slime")
-        {
-            ChangeTargetPos();
-        }
-        if (collision.gameObject.tag == "wall")
-        {
-            ChangeTargetPos();
-        }
-
-    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Slime")
-        {
-            ChangeTargetPos();
-        }
-        if (collision.gameObject.tag == "wall")
         {
             ChangeTargetPos();
         }

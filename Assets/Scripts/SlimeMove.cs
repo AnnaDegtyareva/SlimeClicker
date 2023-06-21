@@ -66,6 +66,12 @@ public class SlimeMove : MonoBehaviour
     {
         if(collision.gameObject.tag == "Slime")
         {
+
+            if (YandexGame.savesData.sounds)
+            {
+                GameCanvas.instance.slimeAudio.clip = GameCanvas.instance.slimeAudios[2];
+                GameCanvas.instance.slimeAudio.Play();
+            }
             SlimeMove sm = collision.gameObject.GetComponent<SlimeMove>();
             if (sm.slimeType == slimeType)
             {             
@@ -100,6 +106,12 @@ public class SlimeMove : MonoBehaviour
                 SlimeGenerator.Instance.CreateSlime(slimeType, pos);
                 transform.localScale = new Vector3(1, 1, 1);
             }
+
+            if (YandexGame.savesData.sounds)
+            {
+                GameCanvas.instance.slimeAudio.clip = GameCanvas.instance.slimeAudios[4];
+                GameCanvas.instance.slimeAudio.Play();
+            }
         }
 
     }
@@ -107,6 +119,11 @@ public class SlimeMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "DarkHole")
         {
+            if (YandexGame.savesData.sounds)
+            {
+                GameCanvas.instance.slimeAudio.clip = GameCanvas.instance.slimeAudios[3];
+                GameCanvas.instance.slimeAudio.Play();
+            }
             YandexGame.savesData.allSlimes[slimeType]--;
             YandexGame.SaveProgress();
             Destroy(gameObject);
