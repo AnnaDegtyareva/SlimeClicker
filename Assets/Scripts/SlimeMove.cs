@@ -19,22 +19,17 @@ public class SlimeMove : MonoBehaviour
 
     public float TimeBetween;
 
-    public bool isMenu;
-
     void OnMouseDown()
     {
         offset = gameObject.transform.position -
         Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 
-        if (!isMenu)
-        {
-            SlimeGenerator.Instance.money += slimePrice;
-            SlimeGenerator.Instance.textUpd();
+        SlimeGenerator.Instance.money += slimePrice;
+        SlimeGenerator.Instance.textUpd();
 
-            SlimeGenerator.Instance.CreateText(slimePrice, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
-        }
+        SlimeGenerator.Instance.CreateText(slimePrice, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
 
-        
+
     }
 
     void OnMouseDrag()
@@ -49,14 +44,7 @@ public class SlimeMove : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (!isMenu)
-        {
-            TimeBetween = Random.Range(3f, 10f);
-        }
-        else
-        {
-            TimeBetween = Random.Range(.5f, 3f);
-        }
+        TimeBetween = Random.Range(.5f, 3f);
         InvokeRepeating("ChangeTargetPos", 0.2f, TimeBetween);
     }
 
