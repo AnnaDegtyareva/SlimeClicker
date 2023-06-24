@@ -10,7 +10,8 @@ public class SlimeMove : MonoBehaviour
     [SerializeField] public int slimePrice;
     [SerializeField] public int slimeType;
 
-    [SerializeField] public string slimeName;
+    [SerializeField] public string slimeNameRu;
+    [SerializeField] public string slimeNameEn;
 
     public int index;
     Vector3 TargetPos;

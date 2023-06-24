@@ -7,10 +7,12 @@ using YG;
 
 public class MenuCanvas : MonoBehaviour
 {
+    public static MenuCanvas Instance;
     [SerializeField] public GameObject canvasMenu;
     [SerializeField] public GameObject canvasCollection;
     [SerializeField] GameObject prefab;
     [SerializeField] Transform grid;
+    [SerializeField] public Transform canvasInfo;
     public List<GameObject> butonnsCollection = new List<GameObject>();
 
     [SerializeField] GameObject[] slimePrefabs;
@@ -26,8 +28,16 @@ public class MenuCanvas : MonoBehaviour
     [SerializeField] GameObject soundsOn;
     [SerializeField] GameObject soundsOff;
 
+    [SerializeField] public GameObject prefabInfo;
+
+    [SerializeField] public string[] slimeInfoRu;
+    [SerializeField] public string[] slimeInfoEn;
+    [SerializeField] public Sprite[] slimeInfoImg;
+
     private void Awake()
     {
+        Instance = this;
+
         if (YandexGame.SDKEnabled)
         {
             Load();
@@ -126,8 +136,10 @@ public class MenuCanvas : MonoBehaviour
             {
                 GameObject newButton = Instantiate(prefab, Vector3.zero, Quaternion.identity);
                 newButton.transform.SetParent(grid, false);
-                newButton.GetComponent<SlimeType>().name = slimePrefabs[i].GetComponent<SlimeMove>().slimeName;
+                newButton.GetComponent<SlimeType>().nameRu = slimePrefabs[i].GetComponent<SlimeMove>().slimeNameRu;
+                newButton.GetComponent<SlimeType>().nameEn = slimePrefabs[i].GetComponent<SlimeMove>().slimeNameEn;
                 newButton.GetComponent<SlimeType>().img = slimeImg[i];
+                newButton.GetComponent<SlimeType>().index = i;
 
                 butonnsCollection.Add(newButton);
             }
