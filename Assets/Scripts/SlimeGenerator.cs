@@ -60,7 +60,7 @@ public class SlimeGenerator : MonoBehaviour
         money = YandexGame.savesData.money;
         textUpd();
 
-        InvokeRepeating("Slime", 3, 15);//поменять цифры
+        InvokeRepeating("Slime", 3, 30);//поменять цифры
 
         ChangeWorld();
 
@@ -172,8 +172,6 @@ public class SlimeGenerator : MonoBehaviour
             ChangeWorld();
         }
 
-        YandexGame.SaveProgress();
-
         allSlimesNow.Add(newSlime);
 
         if (YandexGame.savesData.sounds)
@@ -184,6 +182,9 @@ public class SlimeGenerator : MonoBehaviour
 
         YandexGame.savesData.foodPrice += sm.slimeMoney;
         GameCanvas.instance.ChangeFoodPrice();
+
+
+        YandexGame.SaveProgress();
 
         return true;
     }

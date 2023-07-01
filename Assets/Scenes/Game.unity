@@ -1715,6 +1715,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 388ff9bfabf04fe408e4bceaac53a193, type: 3}
   - {fileID: 8300000, guid: c19e493d82caf3b4caf80d620a4af686, type: 3}
   - {fileID: 8300000, guid: cb6f6bf90bec64d4a82dd22e0e8b6d9f, type: 3}
+  textFoodPrice: {fileID: 989828844}
+  foodPrice: 0
 --- !u!1 &926570268
 GameObject:
   m_ObjectHideFlags: 0
