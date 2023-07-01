@@ -17,15 +17,17 @@ namespace YG
         public int world;
         public bool music;
         public bool sounds;
+        public int foodPrice;
 
         public SavesYG()
         {
             FirstLaunch = true;
-            slimeOpen = new bool[8];
-            allSlimes = new int[8];
+            slimeOpen = new bool[25];
+            allSlimes = new int[25];
             world = 0;
             music = true;
             sounds = true;
+            foodPrice = 25;
         }
     }
 }

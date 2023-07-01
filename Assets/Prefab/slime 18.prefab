@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6947845224726909131}
   - component: {fileID: 6947845224726909128}
   m_Layer: 0
-  m_Name: slime 3
+  m_Name: slime 18
   m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 98903b49e4c84bd4a83ec7f7234fbe88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de7d6a03e371f5f40a84de4d6774e4bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  slimePrice: 400
-  slimeMoney: 10
-  slimeType: 3
-  slimeNameRu: "\u0421\u043D\u0435\u0436\u043E\u043A"
-  slimeNameEn: Blue
+  slimePrice: 4000
+  slimeMoney: 270
+  slimeType: 18
+  slimeNameRu: "\u0421\u043B\u0430\u0439\u043C\u043E-\u043C\u0430\u043C\u0430"
+  slimeNameEn: Slime Mama
   index: 0
-  speed: 3
+  speed: 1
   TimeBetween: 0
 --- !u!61 &6947845224726909131
 BoxCollider2D:
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 0.8}
+    oldSize: {x: 1.1666666, y: 0.99}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

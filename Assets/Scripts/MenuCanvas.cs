@@ -30,9 +30,9 @@ public class MenuCanvas : MonoBehaviour
 
     [SerializeField] public GameObject prefabInfo;
 
-    [SerializeField] public string[] slimeInfoRu;
-    [SerializeField] public string[] slimeInfoEn;
-    [SerializeField] public Sprite[] slimeInfoImg;
+    //[SerializeField] public string[] slimeInfoRu;
+    //[SerializeField] public string[] slimeInfoEn;
+    //[SerializeField] public Sprite[] slimeInfoImg;
 
     private void Awake()
     {

@@ -15,7 +15,7 @@ public class SlimeGenerator : MonoBehaviour
 
     [SerializeField] public GameObject[] slimePrefabs;
     [SerializeField] public Sprite[] slimeImg;
-    [SerializeField] public GameObject[] slimeText;
+    [SerializeField] public GameObject slimeText;
 
     public int money;
     [SerializeField] public TextMeshProUGUI moneyText;
@@ -72,7 +72,7 @@ public class SlimeGenerator : MonoBehaviour
                 Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
                 CreateSlime(0, pos);
             }
-            slimeText[0].SetActive(true);
+            slimeText.SetActive(true);
             YandexGame.savesData.slimeOpen[0] = true;
             YandexGame.savesData.FirstLaunch = false;
         }
@@ -159,13 +159,13 @@ public class SlimeGenerator : MonoBehaviour
 
         if (YandexGame.savesData.slimeOpen[i+1] == false)
         {
-            slimeText[i+1].SetActive(true);
+            slimeText.SetActive(true);
             YandexGame.savesData.slimeOpen[i+1] = true;
         }
 
-        CreateText(sm.slimePrice, (fp + sp) / 2);
+        CreateText(100, (fp + sp) / 2);
 
-        if((i+2)%5 == 0)
+        if((i+1)%4 == 0)
         {
             Debug.Log(YandexGame.savesData.world);
             YandexGame.savesData.world++;
@@ -181,6 +181,9 @@ public class SlimeGenerator : MonoBehaviour
             GameCanvas.instance.slimeAudio.clip = GameCanvas.instance.slimeAudios[1];
             GameCanvas.instance.slimeAudio.Play();
         }
+
+        YandexGame.savesData.foodPrice += sm.slimeMoney;
+        GameCanvas.instance.ChangeFoodPrice();
 
         return true;
     }

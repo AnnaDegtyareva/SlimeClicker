@@ -29,12 +29,12 @@ public class SlimeType : MonoBehaviour
         imgPrefab.sprite = img;
     }
 
-    public void OpenInfo()
-    {
-        GameObject newImg = Instantiate(MenuCanvas.Instance.prefabInfo, Vector3.zero, Quaternion.identity);
-        newImg.transform.SetParent(MenuCanvas.Instance.canvasInfo, false);
-        newImg.GetComponent<SlimeInfo>().textRu = MenuCanvas.Instance.slimeInfoRu[index];
-        newImg.GetComponent<SlimeInfo>().textEn = MenuCanvas.Instance.slimeInfoEn[index];
-        newImg.GetComponent<SlimeInfo>().img = MenuCanvas.Instance.slimeInfoImg[index];
-    }
+    //public void OpenInfo()
+    //{
+    //    GameObject newImg = Instantiate(MenuCanvas.Instance.prefabInfo, Vector3.zero, Quaternion.identity);
+    //    newImg.transform.SetParent(MenuCanvas.Instance.canvasInfo, false);
+    //    newImg.GetComponent<SlimeInfo>().textRu = MenuCanvas.Instance.slimeInfoRu[index];
+    //    newImg.GetComponent<SlimeInfo>().textEn = MenuCanvas.Instance.slimeInfoEn[index];
+    //    newImg.GetComponent<SlimeInfo>().img = MenuCanvas.Instance.slimeInfoImg[index];
+    //}
 }

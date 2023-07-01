@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using YG;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] public AudioSource slimeAudio;
 
     [SerializeField] public AudioClip[] slimeAudios;
+
+    [SerializeField] public TextMeshProUGUI textFoodPrice;
+    public int foodPrice;
 
     private void Awake()
     {
@@ -41,6 +45,7 @@ public class GameCanvas : MonoBehaviour
         {
             worldAudio.Play();
         }
+        foodPrice = YandexGame.savesData.foodPrice;
     }
 
     public void GoToMenu()
@@ -74,14 +79,19 @@ public class GameCanvas : MonoBehaviour
             }
         }
     }
+    public void ChangeFoodPrice()
+    {
+        foodPrice = YandexGame.savesData.foodPrice;
+        textFoodPrice.text = foodPrice.ToString();
+    }
 
     public void CreateFood()
     {
-        if (SlimeGenerator.Instance.money >= 25)
+        if (SlimeGenerator.Instance.money >= foodPrice)
         {
             GameObject newFood = Instantiate(SlimeGenerator.Instance.prefabsFood[Random.Range(0, SlimeGenerator.Instance.prefabsFood.Length)], 
                 new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
-            SlimeGenerator.Instance.money -= 25;
+            SlimeGenerator.Instance.money -= foodPrice;
             SlimeGenerator.Instance.textUpd();
         }
         else

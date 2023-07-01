@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6947845224726909129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  slimePrice: 20
-  slimeMoney: 4
+  slimePrice: 200
+  slimeMoney: 2
   slimeType: 1
-  slimeNameRu: "\u0416\u0435\u043B\u0442\u043E\u043A"
+  slimeNameRu: "\u0417\u043E\u043B\u043E\u0442\u0446\u0435"
   slimeNameEn: 'Yellow '
   index: 0
   speed: 2
