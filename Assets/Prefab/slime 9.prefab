@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6947845224726909131}
   - component: {fileID: 6947845224726909128}
   m_Layer: 0
-  m_Name: slime 3
+  m_Name: slime 9
   m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 98903b49e4c84bd4a83ec7f7234fbe88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a94b10b5a8ce374d9dfb7f6a1d4f1f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  slimePrice: 45
-  slimeMoney: 15
-  slimeType: 3
-  slimeNameRu: "\u0421\u043D\u0435\u0436\u0438\u043D"
-  slimeNameEn: Blue
+  slimePrice: 500
+  slimeMoney: 200
+  slimeType: 9
+  slimeNameRu: "\u041F\u043E\u043D\u0447\u0430\u0440\u0438\u043A"
+  slimeNameEn: Donut
   index: 0
-  speed: 3
+  speed: 1
   TimeBetween: 0
 --- !u!61 &6947845224726909131
 BoxCollider2D:
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 0.8}
+    oldSize: {x: 1.0666667, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

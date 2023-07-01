@@ -23,7 +23,7 @@ public class SlimeGenerator : MonoBehaviour
     [SerializeField] public GameObject prefabFlyText;
     [SerializeField] public GameObject canvas;
 
-    [SerializeField] public GameObject world;
+    [SerializeField] public GameObject[] world;
     [SerializeField] public Sprite[] worldImg;
 
     public List<GameObject> allSlimesNow = new List<GameObject>();
@@ -188,7 +188,12 @@ public class SlimeGenerator : MonoBehaviour
     public void ChangeWorld()
     {
         int number = YandexGame.savesData.world;
-        world.GetComponent<SpriteRenderer>().sprite = worldImg[number];
+
+        for (int i = 0; i < world.Length; i++)
+        {
+            world[i].GetComponent<SpriteRenderer>().sprite = worldImg[number];
+        }
+
         for(int i = 0; i < allSlimesNow.Count; i++)
         {
             Destroy(allSlimesNow[i]);

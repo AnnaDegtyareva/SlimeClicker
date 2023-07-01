@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.436303, g: 0.011764695, b: 0.972549, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 306eee275b995f4408a38a1c117ee72e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  slimePrice: 30
+  slimePrice: 300
+  slimeMoney: 50
   slimeType: 6
-  slimeNameRu: "\u0410\u041F\u0420\u041E\u041B"
-  slimeNameEn: FGHJK
+  slimeNameRu: "\u0420\u0430\u0441\u0441\u0432\u0435\u0442"
+  slimeNameEn: Sunrise
   index: 0
   speed: 1
   TimeBetween: 0
@@ -143,7 +144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.0666667, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

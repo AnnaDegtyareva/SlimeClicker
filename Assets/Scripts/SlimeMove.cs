@@ -8,6 +8,7 @@ public class SlimeMove : MonoBehaviour
     public Rigidbody2D rb;
 
     [SerializeField] public int slimePrice;
+    [SerializeField] public int slimeMoney;
     [SerializeField] public int slimeType;
 
     [SerializeField] public string slimeNameRu;
@@ -25,10 +26,10 @@ public class SlimeMove : MonoBehaviour
         offset = gameObject.transform.position -
         Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 
-        SlimeGenerator.Instance.money += slimePrice;
+        SlimeGenerator.Instance.money += slimeMoney;
         SlimeGenerator.Instance.textUpd();
 
-        SlimeGenerator.Instance.CreateText(slimePrice, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
+        SlimeGenerator.Instance.CreateText(slimeMoney, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
 
 
     }
