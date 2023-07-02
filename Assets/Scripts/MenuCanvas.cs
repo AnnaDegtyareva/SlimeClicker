@@ -74,6 +74,10 @@ public class MenuCanvas : MonoBehaviour
         }
     }
 
+    public void RestartGame()
+    {
+        YandexGame.ResetSaveProgress();
+    }
     public void Music()
     {
         if (YandexGame.savesData.music)

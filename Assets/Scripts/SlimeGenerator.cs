@@ -64,7 +64,7 @@ public class SlimeGenerator : MonoBehaviour
         money = YandexGame.savesData.money;
         textUpd();
 
-        InvokeRepeating("Slime", 5, 30);//поменять цифры
+        InvokeRepeating("Slime", 5, 20);//поменять цифры
 
         ChangeWorld();
 
@@ -132,7 +132,7 @@ public class SlimeGenerator : MonoBehaviour
 
         if(type == -1)
         {
-            type = Random.Range(startCount, count);
+            type = Random.Range(startCount, count-1);
         }
 
         GameObject newSlime = Instantiate(slimePrefabs[type], pos, Quaternion.identity);

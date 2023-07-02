@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  slimePrice: 3777
+  slimePrice: 4565
   slimeMoney: 256
   slimeType: 17
   slimeNameRu: "\u0414\u0430\u043B\u043C\u0430\u0442\u0438\u0448\u043A\u0430"
@@ -108,6 +108,8 @@ MonoBehaviour:
   index: 0
   speed: 2
   TimeBetween: 0
+  cooldownTime: 0.2
+  canDoAction: 0
 --- !u!61 &6947845224726909131
 BoxCollider2D:
   m_ObjectHideFlags: 0
