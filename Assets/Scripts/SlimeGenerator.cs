@@ -39,8 +39,8 @@ public class SlimeGenerator : MonoBehaviour
 
     public void textUpd()
     {
-        moneyText.text = money.ToString();
         YandexGame.savesData.money = money;
+        moneyText.text = money.ToString();
         YandexGame.SaveProgress();
     }
 
@@ -64,7 +64,7 @@ public class SlimeGenerator : MonoBehaviour
         money = YandexGame.savesData.money;
         textUpd();
 
-        InvokeRepeating("Slime", 3, 30);//поменять цифры
+        InvokeRepeating("Slime", 5, 30);//поменять цифры
 
         ChangeWorld();
 

@@ -39,9 +39,6 @@ public class SlimeMove : MonoBehaviour
 
         if (canDoAction)
         {
-            SlimeGenerator.Instance.money += slimeMoney;
-            SlimeGenerator.Instance.textUpd();
-
             SlimeGenerator.Instance.CreateText(slimeMoney, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
             StartCoroutine(ICooldown());
         }
