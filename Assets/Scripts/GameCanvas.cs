@@ -25,6 +25,11 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] public TextMeshProUGUI textFoodPrice;
     public int foodPrice;
 
+    [SerializeField] GameObject pauseOn;
+    [SerializeField] GameObject pauseOff;
+    [SerializeField] GameObject pauseCanvas;
+    bool pause = false;
+
     private void Awake()
     {
         instance = this;
@@ -46,6 +51,34 @@ public class GameCanvas : MonoBehaviour
             worldAudio.Play();
         }
         foodPrice = YandexGame.savesData.foodPrice;
+        ChangeFoodPrice();
+
+        pauseOn.SetActive(false);
+        pauseOff.SetActive(true);
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void Pause()
+    {
+        if (!pause)
+        {
+            pause = true; 
+            pauseOn.SetActive(true);
+            pauseOff.SetActive(false);
+            pauseCanvas.SetActive(true);
+            ViewingAdsYG.Instance.Pause(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pause = false;
+            pauseOn.SetActive(false);
+            pauseOff.SetActive(true);
+            pauseCanvas.SetActive(false);
+            ViewingAdsYG.Instance.Pause(false);
+            Time.timeScale = 1f;
+        }
     }
 
     public void GoToMenu()

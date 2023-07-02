@@ -50,6 +50,10 @@ public class SlimeGenerator : MonoBehaviour
         newText.transform.SetParent(canvas.transform, false);
         newText.GetComponent<TextMeshProUGUI>().text = countMoney.ToString();
         newText.GetComponent<Rigidbody2D>().velocity = pos / 30;
+
+        money += countMoney;
+        textUpd();
+
     }
 
     private void Start()

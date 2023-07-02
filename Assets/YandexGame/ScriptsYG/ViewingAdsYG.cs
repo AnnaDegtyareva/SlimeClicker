@@ -7,6 +7,12 @@ namespace YG
 {
     public class ViewingAdsYG : MonoBehaviour
     {
+        public static ViewingAdsYG Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
         public enum CursorVisible
         {
             [InspectorName("Show Cursor")] Show,
@@ -127,7 +133,7 @@ namespace YG
             customEvents.CloseAd.Invoke();
         }
 
-        void Pause(bool pause)
+        public void Pause(bool pause)
         {
             if (pauseType == PauseType.AudioPause || pauseType == PauseType.All)
             {

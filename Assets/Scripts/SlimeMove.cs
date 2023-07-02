@@ -21,16 +21,30 @@ public class SlimeMove : MonoBehaviour
 
     public float TimeBetween;
 
+    public float cooldownTime = 0.2f;
+    public bool canDoAction;
+
+   
+    private IEnumerator ICooldown()
+    {
+        canDoAction = false;
+        yield return new WaitForSeconds(cooldownTime);
+        canDoAction = true;
+    }
+
     void OnMouseDown()
     {
         offset = gameObject.transform.position -
         Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
 
-        SlimeGenerator.Instance.money += slimeMoney;
-        SlimeGenerator.Instance.textUpd();
+        if (canDoAction)
+        {
+            SlimeGenerator.Instance.money += slimeMoney;
+            SlimeGenerator.Instance.textUpd();
 
-        SlimeGenerator.Instance.CreateText(slimeMoney, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
-
+            SlimeGenerator.Instance.CreateText(slimeMoney, new Vector3(Input.mousePosition.x - 960, Input.mousePosition.y - 540, 10.0f));
+            StartCoroutine(ICooldown());
+        }
 
     }
 
@@ -48,6 +62,8 @@ public class SlimeMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         TimeBetween = Random.Range(.5f, 3f);
         InvokeRepeating("ChangeTargetPos", 0.2f, TimeBetween);
+        canDoAction = true;
+        StartCoroutine(ICooldown());
     }
 
     public void ChangeTargetPos()
