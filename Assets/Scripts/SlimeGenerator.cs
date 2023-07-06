@@ -134,6 +134,10 @@ public class SlimeGenerator : MonoBehaviour
         {
             type = Random.Range(startCount, count-1);
         }
+        else if (type == -2)
+        {
+            type = Random.Range(startCount, count - 2);
+        }
 
         GameObject newSlime = Instantiate(slimePrefabs[type], pos, Quaternion.identity);
         newSlime.GetComponent<SlimeMove>().index = index;
@@ -167,7 +171,7 @@ public class SlimeGenerator : MonoBehaviour
             YandexGame.savesData.slimeOpen[i+1] = true;
         }
 
-        CreateText(100, (fp + sp) / 2);
+        CreateText(25, (fp + sp) / 2);
 
         if((i+1)%4 == 0)
         {

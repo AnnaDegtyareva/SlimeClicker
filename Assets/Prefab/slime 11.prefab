@@ -108,7 +108,7 @@ MonoBehaviour:
   index: 0
   speed: 1
   TimeBetween: 0
-  cooldownTime: 0.2
+  cooldownTime: 1.5
   canDoAction: 0
 --- !u!61 &6947845224726909131
 BoxCollider2D:

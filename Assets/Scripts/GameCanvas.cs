@@ -59,6 +59,13 @@ public class GameCanvas : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void SlimeAds()
+    {
+        YandexGame.RewVideoShow(0);
+        Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+        SlimeGenerator.Instance.CreateSlime(-2, pos);
+    }
+
     public void Pause()
     {
         if (!pause)

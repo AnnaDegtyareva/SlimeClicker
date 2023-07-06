@@ -21,7 +21,7 @@ public class SlimeMove : MonoBehaviour
 
     public float TimeBetween;
 
-    public float cooldownTime = 0.2f;
+    public float cooldownTime = 1.5f;
     public bool canDoAction;
 
    
@@ -59,7 +59,7 @@ public class SlimeMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         TimeBetween = Random.Range(.5f, 3f);
         InvokeRepeating("ChangeTargetPos", 0.2f, TimeBetween);
-        canDoAction = true;
+
         StartCoroutine(ICooldown());
     }
 
