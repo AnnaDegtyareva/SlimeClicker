@@ -824,6 +824,7 @@ namespace YG
             OpenVideoEvent?.Invoke();
             OpenVideoAd.Invoke();
             nowVideoAd = true;
+            GameCanvas.instance.Pause();
         }
 
         public static Action CloseVideoEvent;
@@ -833,6 +834,7 @@ namespace YG
 
             CloseVideoAd.Invoke();
             CloseVideoEvent?.Invoke();
+            GameCanvas.instance.Pause();
         }
 
         public static Action<int> RewardVideoEvent;

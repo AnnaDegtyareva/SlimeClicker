@@ -62,12 +62,15 @@ public class GameCanvas : MonoBehaviour
     public void SlimeAds()
     {
         YandexGame.RewVideoShow(0);
+        Pause();
+        Invoke("Pause", 0.2f);
         Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
         SlimeGenerator.Instance.CreateSlime(-2, pos);
     }
 
     public void Pause()
     {
+        Debug.Log("pause");
         if (!pause)
         {
             pause = true; 

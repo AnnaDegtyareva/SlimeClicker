@@ -48,10 +48,8 @@ public class SlimeMove : MonoBehaviour
     void OnMouseDrag()
     {
         Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-        if(offset.x <= 10.5f && offset.y <= 6.5f)
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
-        }    
+        transform.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
+          
     }
 
     private void Start()
@@ -150,6 +148,10 @@ public class SlimeMove : MonoBehaviour
     {
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
+        if ((transform.position.x >= 11f || transform.position.y >= 6f) || (transform.position.x <= -11f || transform.position.y <= -6f))
+        {
+            transform.position = new Vector2(1,1);
+        }
     }
 
 
