@@ -30,6 +30,11 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] GameObject pauseCanvas;
     bool pause = false;
 
+    [SerializeField] GameObject[] textPrize;
+    [SerializeField] GameObject PrizeCanvas;
+    [SerializeField] GameObject psPrize;
+    [SerializeField] TextMeshProUGUI textMoney;
+
     private void Awake()
     {
         instance = this;
@@ -56,21 +61,44 @@ public class GameCanvas : MonoBehaviour
         pauseOn.SetActive(false);
         pauseOff.SetActive(true);
         pauseCanvas.SetActive(false);
+        PrizeCanvas.SetActive(false);
+        for (int i = 0; i < textPrize.Length; i++)
+        {
+            textPrize[i].SetActive(false);
+        }
         Time.timeScale = 1f;
     }
 
     public void SlimeAds()
     {
         YandexGame.RewVideoShow(0);
-        Pause();
-        Invoke("Pause", 0.2f);
-        Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
-        SlimeGenerator.Instance.CreateSlime(-2, pos);
+        int prize = Random.Range(0, 3);
+        if(prize == 0)
+        {
+            Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+            SlimeGenerator.Instance.CreateSlime(-2, pos);
+            GameObject ps = Instantiate(psPrize, new Vector2(pos.x, pos.y), Quaternion.identity);
+        }
+        else if(prize == 1)
+        {
+            GameObject newFood = Instantiate(SlimeGenerator.Instance.prefabsFood[Random.Range(0, SlimeGenerator.Instance.prefabsFood.Length)],
+                new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);
+            GameObject ps = Instantiate(psPrize, new Vector2(newFood.transform.position.x, newFood.transform.position.y), Quaternion.identity);
+            ps.transform.SetParent(newFood.transform);
+        }
+        else
+        {
+            int money = Random.Range(10, 350);
+            SlimeGenerator.Instance.money += money;
+            SlimeGenerator.Instance.textUpd();
+            textMoney.text = money.ToString();
+        }
+        PrizeCanvas.SetActive(true);
+        textPrize[prize].SetActive(true);
     }
 
     public void Pause()
     {
-        Debug.Log("pause");
         if (!pause)
         {
             pause = true; 
