@@ -72,14 +72,18 @@ public class GameCanvas : MonoBehaviour
     public void SlimeAds()
     {
         YandexGame.RewVideoShow(0);
+    }
+
+    public void Prize()
+    {
         int prize = Random.Range(0, 3);
-        if(prize == 0)
+        if (prize == 0)
         {
             Vector2 pos = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
             SlimeGenerator.Instance.CreateSlime(-2, pos);
             GameObject ps = Instantiate(psPrize, new Vector2(pos.x, pos.y), Quaternion.identity);
         }
-        else if(prize == 1)
+        else if (prize == 1)
         {
             GameObject newFood = Instantiate(SlimeGenerator.Instance.prefabsFood[Random.Range(0, SlimeGenerator.Instance.prefabsFood.Length)],
                 new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f)), Quaternion.identity);

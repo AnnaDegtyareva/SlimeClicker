@@ -835,6 +835,7 @@ namespace YG
             CloseVideoAd.Invoke();
             CloseVideoEvent?.Invoke();
             GameCanvas.instance.Pause();
+            GameCanvas.instance.Prize();
         }
 
         public static Action<int> RewardVideoEvent;
