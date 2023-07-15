@@ -148,7 +148,7 @@ public class SlimeMove : MonoBehaviour
     {
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
-        if ((transform.position.x >= 11f || transform.position.y >= 6f) || (transform.position.x <= -11f || transform.position.y <= -6f))
+        if ((transform.position.x >= 11f || transform.position.y >= 5f) || (transform.position.x <= -11f || transform.position.y <= -5f))
         {
             transform.position = new Vector2(1,1);
         }
