@@ -9,6 +9,7 @@ public class GameCanvas : MonoBehaviour
 {
     public static GameCanvas instance;
 
+
     [SerializeField] public GameObject canvasShop;
     [SerializeField] GameObject prefab;
     [SerializeField] Transform grid;
@@ -34,6 +35,17 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] GameObject PrizeCanvas;
     [SerializeField] GameObject psPrize;
     [SerializeField] TextMeshProUGUI textMoney;
+
+    public RectTransform Ui1;
+    public RectTransform Ui2;
+    public Vector3 pos1;
+    public Vector3 pos2;
+
+    private void Start()
+    {
+        pos1 = Camera.main.ScreenToWorldPoint(Ui1.position);
+        pos2 = Camera.main.ScreenToWorldPoint(Ui2.position);
+    }
 
     private void Awake()
     {

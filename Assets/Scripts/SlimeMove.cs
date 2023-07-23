@@ -146,12 +146,14 @@ public class SlimeMove : MonoBehaviour
 
     private void Update()
     {
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x ,GameCanvas.instance.pos1.x, GameCanvas.instance.pos2.x), Mathf.Clamp(transform.position.y, GameCanvas.instance.pos1.y, GameCanvas.instance.pos2.y));
+
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
-        if ((transform.position.x >= 11f || transform.position.y >= 5f) || (transform.position.x <= -11f || transform.position.y <= -5f))
-        {
-            transform.position = new Vector2(1,1);
-        }
+        //if ((transform.position.x >= 11f || transform.position.y >= 5f) || (transform.position.x <= -11f || transform.position.y <= -5f))
+        //{
+        //    transform.position = new Vector2(1,1);
+        //}
     }
 
 
