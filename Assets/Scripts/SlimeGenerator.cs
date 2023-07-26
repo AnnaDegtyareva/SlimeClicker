@@ -31,6 +31,7 @@ public class SlimeGenerator : MonoBehaviour
     public int startCount = 0;
 
     [SerializeField] public GameObject[] prefabsFood;
+    [SerializeField] public GameObject money_canvas;
 
     private void Awake()
     {
@@ -44,10 +45,10 @@ public class SlimeGenerator : MonoBehaviour
         YandexGame.SaveProgress();
     }
 
-    public void CreateText(int countMoney, Vector3 pos)
+    public void CreateText(int countMoney, Vector2 pos)
     {
         GameObject newText = Instantiate(prefabFlyText, prefabFlyText.transform.position = pos, Quaternion.identity) as GameObject;
-        newText.transform.SetParent(canvas.transform, false);
+        newText.transform.SetParent(money_canvas.transform, false);
         newText.GetComponent<TextMeshProUGUI>().text = countMoney.ToString();
         newText.GetComponent<Rigidbody2D>().velocity = pos / 30;
 
@@ -171,7 +172,7 @@ public class SlimeGenerator : MonoBehaviour
             YandexGame.savesData.slimeOpen[i+1] = true;
         }
 
-        CreateText(25, (fp + sp) / 2);
+        CreateText(25, Input.mousePosition);
 
         if((i+1)%4 == 0)
         {
